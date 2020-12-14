@@ -61,4 +61,4 @@ class SLinkedList:
             node.next = previous  # Setting pointer to link to the previous node
             previous = node # updating previous node
             node = nextNode # updating current node
-        self.head = previous # Setting new head
+        self.head = previous # Setting head to last node

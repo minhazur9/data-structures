@@ -31,10 +31,10 @@ class DLinkedList:
             return 'node deleted'
         while node is not None:
             if(node.value == value):  
-                previous.next = node.next # Set previous node pointer to skip its next node
+                previous.next = node.next # Set previous node pointer to skip and link to node after deleted one
                 if node.next is not None:
-                    node.next.prev = previous  # Sets the prev pointer of the node after the deleted one to point towards the previous node
-                node = previous # Set the current node to previous to remove references to deleted node
+                    node.next.prev = previous  # Sets the prev pointer of the next node link to the node before the deleted one
+                node = previous # update current node
                 return 'Node deleted'
             previous = node # updates previous node
             node = node.next # update current node
@@ -55,3 +55,14 @@ class DLinkedList:
             size += 1
             node = node.next
         return size
+    
+    def reverse(self):
+        previous = None
+        node = self.head
+        while node is not None:
+            nextNode = node.next  # Saving the next node
+            node.next = previous  # Setting pointer to link to the previous node
+            node.prev = nextNode
+            previous = node # updating previous node
+            node = nextNode # updating current node
+        self.head = previous # Setting head to last node
