@@ -26,12 +26,12 @@ class SLinkedList:
         node = self.head
         previous = None
         if(node.value == value):
-            self.head = node.next # Set head as next node if first value deleted
+            self.head = node.next 
             return 'Node deleted'
         while node is not None:
             if(node.value == value):  
-                previous.next = node.next # Set previous node pointer to skip its next node
-                node = previous # Set the current node to previous to remove references to deleted node
+                previous.next = node.next  # Set previous node pointer to skip and link to node after deleted one
+                node = previous  # update current node
                 return 'Node deleted'
             previous = node # updates previous node
             node = node.next # update current node
@@ -52,3 +52,13 @@ class SLinkedList:
             size += 1
             node = node.next
         return size
+    
+    def reverse(self):
+        previous = None
+        node = self.head
+        while node is not None:
+            nextNode = node.next  # Saving the next node
+            node.next = previous  # Setting pointer to link to the previous node
+            previous = node # updating previous node
+            node = nextNode # updating current node
+        self.head = previous # Setting new head
