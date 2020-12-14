@@ -52,14 +52,3 @@ class SLinkedList:
             size += 1
             node = node.next
         return size
-
-list1 = SLinkedList()
-list1.insert(1)
-list1.insert(2)
-list1.insert(3)
-list1.delete(2)
-print(list1.head.next.value)
-
-
-
-
