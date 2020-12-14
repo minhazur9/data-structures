@@ -55,12 +55,3 @@ class SLinkedList:
 
 
 
-
-list1 = SLinkedList()
-list1.insert("Mon")
-list1.insert("Tues")
-list1.insert("Wed")
-list1.insert("Thurs")
-list1.insert("Fri")
-list1.listAll()
-print(list1.size())
