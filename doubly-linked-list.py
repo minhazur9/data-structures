@@ -55,17 +55,3 @@ class DLinkedList:
             size += 1
             node = node.next
         return size
-
-        
-        
-
-
-
-
-
-
-
-
-
-
-    
