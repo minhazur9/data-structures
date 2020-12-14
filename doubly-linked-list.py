@@ -1,21 +1,22 @@
-
 class Node:                         
     def __init__(self, value=None):
         self.value = value   
-        self.next = None      
+        self.next = None    
+        self.prev = None  
  
-class SLinkedList:
+class DLinkedList:
     # Setting first node to None
     def __init__(self):
         self.head = None
     
-    # To add a new node
     def insert(self,value):
-        new_node = Node(value)  
+        new_node = Node(value)
         new_node.next = self.head   # Previous head becomes the next node of the new one
+        new_node.prev = None     # The new_node does not have a previous value
+        if(self.head is not None):
+            self.head.prev = new_node   # Sets the new node to the previous pointer for the head
         self.head = new_node     # New node becomes the new head
     
-    # List all Nodes
     def listAll(self):
         node = self.head
         while node is not None:
@@ -25,12 +26,14 @@ class SLinkedList:
     def delete(self,value):
         node = self.head
         previous = None
-        if(node.value == value):
-            self.head = node.next # Set head as next node if first value deleted
-            return 'Node deleted'
+        if (self.head.value == value):
+            self.head = node.next
+            return 'node deleted'
         while node is not None:
             if(node.value == value):  
                 previous.next = node.next # Set previous node pointer to skip its next node
+                if node.next is not None:
+                    node.next.prev = previous  # Sets the prev pointer of the node after the deleted one to point towards the previous node
                 node = previous # Set the current node to previous to remove references to deleted node
                 return 'Node deleted'
             previous = node # updates previous node
@@ -53,13 +56,16 @@ class SLinkedList:
             node = node.next
         return size
 
-list1 = SLinkedList()
-list1.insert(1)
-list1.insert(2)
-list1.insert(3)
-list1.delete(2)
-print(list1.head.next.value)
+        
+        
 
 
 
 
+
+
+
+
+
+
+    
