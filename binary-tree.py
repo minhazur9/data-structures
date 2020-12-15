@@ -119,34 +119,3 @@ class Node:
                 return f'{value} was not found'  # If no more values, it was not found
             parentNode = self
             return self.right.delete(value, parentNode) # Repeat process until either found or reached end of tree
-    
-
-
-root = Node(10)
-root.insert(7)
-root.insert(9)
-root.insert(5)
-root.insert(14)
-root.insert(12)
-root.insert(9)
-root.in_order_print()
-print('-----')
-root.delete(9)
-root.delete(5)
-root.delete(14)
-root.insert(5)
-root.delete(7)
-root.insert(11)
-root.insert(13)
-root.delete(12)
-root.in_order_print()
-
-
-
-
-
-
-
-
-
-
